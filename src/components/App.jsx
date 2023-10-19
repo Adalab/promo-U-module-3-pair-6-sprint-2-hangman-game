@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
+import { NavLink, Route, Routes } from "react-router-dom";
 
 
 // api
@@ -16,6 +17,7 @@ import Dummy from "./Dummy";
 import SolutionLetters from "./SolutionLetters";
 import ErrorLetters from "./ErrorLetters";
 import Form from "./Form";
+import Footer from "./Footer";
 
 function App() {
   const [word, setWord] = useState("");
@@ -51,6 +53,7 @@ function App() {
 
   return (
     <div className="page">
+   
       <Header />
       <main className="main">
         <section>
@@ -60,6 +63,14 @@ function App() {
         </section>
         <Dummy numberErrors= {getNumberOfErrors()}/>
       </main>
+      <Routes>
+         {/*<Route path='/jugar' element={<JugarPage />} />*/}
+         <Route path='/instructions' element={<InstructionsPage />} />
+         {/*<Route path='/options' element={<OptionsPage />} />*/}
+         <Route path='*' element={<NotFoundPage />} />
+      </Routes>
+      <Footer NavLink={NavLink} 
+      />
     </div>
   );
 }
